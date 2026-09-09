@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart AI Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="splash-bg"></div>
+    <div class="bot-wrap">
+      <div class="bot-glow"></div>
+      <div class="bot-face">
+        <div class="bot-eye left"></div>
+        <div class="bot-eye right"></div>
+        <div class="bot-mouth"></div>
+      </div>
+    </div>
+    <h1 class="splash-title">Your Smart<br/><span>AI Assistant</span><br/>Here</h1>
+    <button class="btn-next" onclick="enterChat()">Get Started →</button>
+  </div>
+
+  <!-- Chat Screen -->
+  <div class="chat-screen hidden" id="chatScreen">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="avatar-ring">
+          <div class="avatar">AI</div>
+        </div>
+        <div>
+          <div class="sidebar-name">AI Assistant</div>
+          <div class="sidebar-status"><span class="dot"></span> Online</div>
+        </div>
+        <button class="close-btn" onclick="toggleSidebar()">✕</button>
+      </div>
+      <div class="saved-label">Saved Chats</div>
+      <div class="search-bar"><span>🔍</span><input type="text" placeholder="Search..." /></div>
+      <div class="chat-tabs">
+        <button class="tab active">Chat</button>
+        <button class="tab">Image</button>
+        <button class="tab">Code</button>
+      </div>
+      <div class="saved-list" id="savedList">
+        <!-- filled by JS -->
+      </div>
+    </aside>
+
+    <!-- Main Chat -->
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div class="topbar-title">Smart AI Chat</div>
+        <div class="topbar-avatar">AI</div>
+      </header>
+
+      <!-- Welcome Hero -->
+      <div class="welcome-hero" id="welcomeHero">
+        <div class="welcome-bot">
+          <div class="wb-eye l"></div>
+          <div class="wb-eye r"></div>
+        </div>
+        <h2>Welcome to <span>AI Chat</span></h2>
+        <p>Ask me anything — code, content, images, ideas.</p>
+        <div class="quick-chips">
+          <button onclick="quickAsk('Write a Python hello world')">🐍 Python code</button>
+          <button onclick="quickAsk('Give me a creative story idea')">✍️ Story idea</button>
+          <button onclick="quickAsk('Explain quantum computing simply')">🔬 Explain something</button>
+          <button onclick="quickAsk('Design tips for mobile UI')">🎨 Design tips</button>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages" id="messages"></div>
+
+      <!-- Input -->
+      <div class="input-row">
+        <button class="attach-btn" title="Attach">📎</button>
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Ask me anything..."
+          onkeydown="if(event.key==='Enter') sendMessage()"
+        />
+        <button class="send-btn" onclick="sendMessage()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
